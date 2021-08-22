@@ -1,8 +1,9 @@
 import example.Lists.*;
 
-@main def run(): Unit =
+@main def run(): Unit = {
   println(max(List(1,33,2)))
-  println(sqrt(893));
+  println(sqrt(64));
+}
 def sqrt(x: Double): Double = {
   def improveGuess(guess: Double, x: Double): Double = (guess + x / guess) / 2;
   def isGoodEnough(guess: Double, x: Double): Boolean = Math.abs(guess * guess - x) < .0000000000001;
@@ -12,8 +13,7 @@ def sqrt(x: Double): Double = {
   def sqrtIter(guess: Double, originalNumber: Double): Double = {
     steps = steps + 1;
     if (guess == lastGuess) then iter = iter + 1 else iter = 0;
-    if (iter > 5) then return guess;
-    if (isGoodEnough(guess, x)) {
+    if (iter > 5 || isGoodEnough(guess, x)) {
       println(s"steps: $steps");
       return guess
     };
